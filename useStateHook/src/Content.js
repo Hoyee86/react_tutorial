@@ -1,69 +1,74 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
-import './Content.css'
+import "./Content.css";
 const Content = () => {
-
-  // const [name, setName] = useState('Bashzedhug🫂')
-  const [items, setItems] = useState ([
+  const [items, setItems] = useState([
     {
       id: 1,
       checked: false,
-      item: "A bag of Garri"
+      item: "A bag of Garri",
     },
     {
       id: 2,
-      checked: true,
-      item: "Rice"
+      checked: false,
+      item: "Rice",
     },
     {
       id: 3,
       checked: false,
-      item: "Cray-Fish"
+      item: "Cray-Fish",
     },
     {
       id: 4,
       checked: false,
-      item: "Semo"
+      item: "Semo",
     },
-    
-  ])
-    
-  
-  
-  // const handleNameChange = () => {
-  //       const names = ["Adejare🖥️", "Adebisi💻", "Aderayo⌨️"];
-  //       const int = Math.floor(Math.random() * 3);
-  //       setName(names[int])
-  //   };
+  ]);
 
-   
+  const handleCheck = (id) => {
+    // console.log(`key:${id}`)
+    const listItems = items.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
+    setItems(listItems); //this function allows the items to be clickable in the UI
 
-  //   const handleClick2 = (name) => {
-  //     console.log(`${name} was clicked`)
-  //   }
+    localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
+  };
+
+  const handleDelete = (id) => {
+    const listItems = items.filter((item) => item.id !== id);
+    setItems(listItems); //this filter function here filters through an array & to create a new array with listitems which contain all items except one with specified id.
+  };
 
   return (
-    <main className='student'>
-      
-      {/* <h1>{name}</h1>
-      <button onClick={handleNameChange}>Change Name</button>
-      <button onClick={handleClick}>Click me</button>
-      <button onDoubleClick={() => handleClick2('Ajoke')}>Click me</button>   */}
-    
-    <ul>
-      {items.map((item) =>(
-        <li className='item' key={item.id}>
-          <input type="checkbox" checked={item.checked} />
+    <main className="student">
+    {items.length ? (
+        <ul>
+        {items.map((item) => (
+          <li className="item" key={item.id}>
+            <input
+              type="checkbox"
+              onClick={() => handleCheck(item.id)}
+              checked={item.checked}
+            />
 
-          <label>{item.item}</label>
-          <BsFillTrashFill/>
-        </li>
-      ))}
-    </ul>
+            <label 
+            style={(item.checked) ? {textDecoration: "line-through"} : null} // style here allows the items to be highlighted bfr delete
+              onDoubleClick={() => handleDelete(item.id)}
+              >{item.item}</label>
+            <BsFillTrashFill 
+            onClick={() => handleDelete(item.id)}
+            role= "button"
+            tabIndex="0"
+             />
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p style={{marginTop: "2rem"}}>Your list is Empty!!!🚮</p>
+    )}
     </main>
-    
-
   );
-}
+};
 
-export default Content
+export default Content;

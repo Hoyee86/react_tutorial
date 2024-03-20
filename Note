@@ -12,7 +12,7 @@ CSS Modules
 
 
 
-Hooks allow function components to have access to state and other React features.
+Hooks => allow function components to have access to state and other React features.
 Because of this, class components are generally no longer needed
 
 The React useState Hook allows us to track state in a function component.
@@ -21,6 +21,9 @@ State generally refers to data or properties that need to be tracking in an appl
 Initialize useState
 We initialize our state by calling useState in our function component.
 
-useState accepts an initial state and returns two values:
+useState =>  accepts an initial state and returns two values:
 The current state.
 A function that updates the state
+
+//Local-Storage=> is an object not a method and not a function but it's a part of web storage API & provide,method for storing and accessing data locally in the users web browser.
+It cant work alone without the help of JSON.stringify or JSON.parse.
