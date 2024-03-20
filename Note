@@ -27,3 +27,9 @@ A function that updates the state
 
 //Local-Storage=> is an object not a method and not a function but it's a part of web storage API & provide,method for storing and accessing data locally in the users web browser.
 It cant work alone without the help of JSON.stringify or JSON.parse.
+
+
+PROPS => this is a property.
+React Props are like function arguments in JavaScript and attributes in HTML.
+
+PROP DRILLING => this allow us to pass a data from a parent component to child component.
