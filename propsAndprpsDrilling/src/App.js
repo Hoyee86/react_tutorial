@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Header";
 import Content from "./Content";
 import Footer from "./Footer";
+import AddItem from "./AddItem";
 
 
 
@@ -33,6 +34,7 @@ function App() {
       item: "Semo",
     },
   ]);
+  const [newItem, setNewItem] = useState('')
 
   const handleCheck = (id) => {
     // console.log(`key:${id}`)
@@ -49,9 +51,22 @@ function App() {
     setItems(listItems); //this filter function here filters through an array & to create a new array with listitems which contain all items except one with specified id.
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if(!newItem) return;
+
+    setNewItem('')
+  }
+
   return (
     <div className="App">
       <Header title = "Welcome to Props👨‍💻"/>
+      <AddItem
+      newItem={newItem}
+      setNewItem={setNewItem}
+      handleSubmit={handleSubmit}
+      
+      />
       <Content 
         items={items}
         handleCheck={handleCheck}
