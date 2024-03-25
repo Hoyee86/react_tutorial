@@ -89,10 +89,10 @@ button {
   font-size: 1rem;
   background-color: aliceblue;
   cursor: pointer;
-  color: #61dafb
+  color: #06b9ea
 }
 
-button:focus
+button:focus,
 button:hover{
   color: white;
   background-color: limegreen;
