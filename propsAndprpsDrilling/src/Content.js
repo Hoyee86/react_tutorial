@@ -1,4 +1,4 @@
-import ItemList from "./itemList";
+import ItemList from "./ItemList";
 import "./Content.css";
 
 const Content = ({items, handleCheck, handleDelete}) => {

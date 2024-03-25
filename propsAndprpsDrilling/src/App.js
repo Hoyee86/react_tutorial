@@ -51,7 +51,7 @@ function App() {
     setItems(listItems); //this filter function here filters through an array & to create a new array with listitems which contain all items except one with specified id.
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if(!newItem) return;
 
