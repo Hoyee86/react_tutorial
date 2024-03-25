@@ -11,7 +11,7 @@ import Footer from "./Footer";
 function App() {
   return (
     <div className="App">
-      <Header title = " ﷼Welcome to props 👨‍💻"  />
+      <Header title = "﷼weĽČǑmĕ to þŘŐÞŞ 👨‍💻"  />
       <Content />
       <Footer />
     </div>
