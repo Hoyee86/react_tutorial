@@ -10,48 +10,35 @@ import AddItem from "./AddItem";
 
 
 
+
+
 function App() {
-
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      checked: false,
-      item: "A bag of Garri",
-    },
-    {
-      id: 2,
-      checked: false,
-      item: "Rice",
-    },
-    {
-      id: 3,
-      checked: false,
-      item: "Cray-Fish",
-    },
-    {
-      id: 4,
-      checked: false,
-      item: "Semo",
-    },
-  ]);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem("shoppinglist")))
+  
   const [newItem, setNewItem] = useState('')
-
-  const addItem = (item) => {
+  
+  const setAndSaveItems = (newItems) => {
+    setItems(newItems)
+    localStorage.setItem("shoppinglist", JSON.stringify(newItems));
+};
+ 
+const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = {id, checked: false, item}
     const listItems = [...items, myNewItem]
-    setItems(listItems);
-    localStorage.setItem("shoppinglist", JSON.stringify(listItems));
+    setAndSaveItems(listItems)
+    
+
   }
 
   const handleCheck = (id) => {
-    // console.log(`key:${id}`)
+  
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(listItems); //this function allows the items to be clickable in the UI
 
-    localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
+    // localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
   };
 
   const handleDelete = (id) => {
