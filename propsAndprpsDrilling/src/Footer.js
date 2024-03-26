@@ -5,7 +5,7 @@ const Footer = ({length}) => {
   return (
     <footer>
         <p>{length} List {
-          length === 1? 'item' : 'items' //this ternary condition shows plural form of list if the item are more than one & just only list if otherwise
+          length === 1 ? 'item' : 'items' //this ternary condition shows plural form of list if the item are more than one & just only list if otherwise
         }</p>
     </footer>
   );
