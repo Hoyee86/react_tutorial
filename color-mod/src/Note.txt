@@ -10,4 +10,10 @@ HOW TO CREATE A REACT-VITE-COLOR-MOD:-
 
 
 Anything inside return is called REACT FRAGMENT
-React fragments is a feature in React that allows you to return multiple HTML elements from a React Component12345. It is a common pattern in React for a component to return multiple elements, but with the usual React component syntax and return, it always expects only a single HTML element to be returned1. React Fragment is used to combine the child nodes and render without creating an extra parent Node4. The Fragment Node is not rendered on the DOM instead it just groups up the elements/ child nodes4.
+React fragments is a feature in React that allows you to return multiple HTML elements from a React Component.
+It is a common pattern in React for a component to return multiple elements, but with the usual React component syntax and return,
+it always expects only a single HTML element to be returned1.
+React Fragment is used to combine the child nodes and render without creating an extra parent Node4.
+The Fragment Node is not rendered on the DOM instead it just groups up the elements/ child nodes4.
+
+ColorNames=>
