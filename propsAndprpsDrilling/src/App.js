@@ -15,8 +15,8 @@ function App() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log('render')
-  })
+    console.log('when loading')
+  },)
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
@@ -32,8 +32,7 @@ function App() {
 
   const handleCheck = (id) => {
     const listItems = items.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item
-    );
+      item.id === id ? { ...item, checked: !item.checked } : item);
     setItems(listItems); //this function allows the items to be clickable in the UI
 
     // localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
