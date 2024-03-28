@@ -7,32 +7,55 @@ import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
 
 function App() {
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("shoppinglist"))
-  );
+  //API
+  const API_URL = `http://localhost:3500/items`;
+
+  const [items, setItems] = useState([]);
+  const [fetchError, setFetchError] = useState(null);
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
-    console.log('when loading')
-  },)
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem("shoppinglist", JSON.stringify(newItems));
-  };
+        if (!response.ok) throw Error(`The data is not accessible!!!`);
+        const listItems = await response.json();
+        console.log(listItems);
+        setItems(listItems);
+
+        setFetchError(null);
+      } catch (err) {
+        setFetchError(err.message);
+      } finally {
+        setisLoading(false);
+      }
+    };
+
+    setTimeout(() => {
+      (async () => await fetchItems())();
+    }, 2000);
+  }, []);
+
+  // const setAndSaveItems = (newItems) => {
+  //   setItems(newItems);
+  //   localStorage.setItem("shoppinglist", JSON.stringify(newItems));
+  // };
 
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
-    setAndSaveItems(listItems);
+    setItems(listItems);
   };
 
   const handleCheck = (id) => {
     const listItems = items.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item);
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
     setItems(listItems); //this function allows the items to be clickable in the UI
 
     // localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
@@ -63,13 +86,19 @@ function App() {
         handleSubmit={handleSubmit}
       />
 
-      <Content
-        items={items.filter((item) =>
-          item.item.toLowerCase().includes(search.toLocaleLowerCase())
+      <main className="student">
+        {isLoading && <p>Loading items...</p>}
+        {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
+        {!fetchError && !isLoading && (
+          <Content
+            items={items.filter((item) =>
+              item.item.toLowerCase().includes(search.toLowerCase())
+            )}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+          />
         )}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+      </main>
 
       <Footer length={items.length} />
     </div>
