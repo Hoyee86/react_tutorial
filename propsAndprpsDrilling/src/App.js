@@ -5,6 +5,8 @@ import Content from "./Content";
 import Footer from "./Footer";
 import AddItem from "./AddItem";
 import SearchItem from "./SearchItem";
+import ApiRequest from "./ApiRequest";
+
 
 function App() {
   //API
@@ -45,20 +47,44 @@ function App() {
   //   localStorage.setItem("shoppinglist", JSON.stringify(newItems));
   // };
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
     setItems(listItems);
+
+   //POST
+    const postOption = {
+      method: "POST",
+      headers: {
+        'Content-Type':'apllication/json'
+      },
+      body: JSON.stringify(myNewItem)
+    }
+  const result = await ApiRequest(API_URL,postOption);
+  if(result) setFetchError(result)
+
   };
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(listItems); //this function allows the items to be clickable in the UI
 
-    // localStorage.setItem("shoppinglist", JSON.stringify(listItems)); //this function allow the clicked items to be stored inside a local storage in the web browser
+    //UPDATE
+    const myItem = listItems.filter((item)  => item.id === id)
+    const updateOption = {
+      method: 'PATCH',
+      headers: {
+        'Content-TYpe':'application/json'
+      },
+      body:JSON.stringify({checked: myItem[0].checked})
+    }
+    const reqUrl = `${API_URL}/${id}`
+    const result = await ApiRequest(reqUrl, updateOption);
+    if(result) setFetchError(result)
+
   };
 
   const handleDelete = (id) => {
