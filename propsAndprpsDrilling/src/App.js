@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Header";
 import Content from "./Content";
@@ -13,6 +13,10 @@ function App() {
 
   const [newItem, setNewItem] = useState("");
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    console.log('render')
+  })
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
