@@ -87,10 +87,22 @@ function App() {
 
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems); //this filter function here filters through an array & to create a new array with listitems which contain all items except one with specified id.
+  
+  
+    // DELETE
+  
+    const delOption = {
+      method: "DELETE",
+    }
+    const reqUrl = `${API_URL}/${id}`
+      const result = await ApiRequest(reqUrl, delOption);
+      if(result) setFetchError(result);
   };
+
+    
 
   const handleSubmit = (e) => {
     e.preventDefault();
