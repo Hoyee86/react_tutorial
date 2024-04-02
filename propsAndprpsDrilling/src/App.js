@@ -54,14 +54,14 @@ function App() {
     setItems(listItems);
 
    //POST
-    const postOption = {
+    const postOptions = {
       method: "POST",
       headers: {
         'Content-Type':'apllication/json'
       },
       body: JSON.stringify(myNewItem)
     }
-  const result = await ApiRequest(API_URL,postOption);
+  const result = await ApiRequest(API_URL, postOptions);
   if(result) setFetchError(result)
 
   };
@@ -74,7 +74,7 @@ function App() {
 
     //UPDATE
     const myItem = listItems.filter((item)  => item.id === id)
-    const updateOption = {
+    const updateOptions = {
       method: 'PATCH',
       headers: {
         'Content-TYpe':'application/json'
@@ -82,7 +82,7 @@ function App() {
       body:JSON.stringify({checked: myItem[0].checked})
     }
     const reqUrl = `${API_URL}/${id}`
-    const result = await ApiRequest(reqUrl, updateOption);
+    const result = await ApiRequest(reqUrl, updateOptions);
     if(result) setFetchError(result)
 
   };

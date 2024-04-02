@@ -24,6 +24,11 @@
       "id": "311",
       "checked": true,
       "item": "Bread"
+    },
+    {
+      "id": "8",
+      "checked": true,
+      "item": "Denise"
     }
   ]
 }
