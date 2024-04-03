@@ -33,3 +33,6 @@ PROPS => this is a property.
 React Props are like function arguments in JavaScript and attributes in HTML.
 
 PROP DRILLING => this allow us to pass a data from a parent component to child component.
+
+useRef
+useRef is a React Hook that lets you reference a value that’s not needed for rendering.
