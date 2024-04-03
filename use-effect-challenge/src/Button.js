@@ -15,3 +15,4 @@ const Button = ({buttonText, reqType, setReqType}) => {
 }
 
 export default Button
+ 
