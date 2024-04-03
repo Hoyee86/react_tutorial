@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ListItem = () => {
+const ListItem = ({item}) => {
   return (
-    <div>
-      
-    </div>
+    <li>
+      {JSON.stringify(item)}
+    </li>
   )
 }
 
