@@ -1,6 +1,6 @@
 import Feed from "./Feed"
 
-const Home = () => {
+const Home = ({posts}) => {
   return (
     <main className='Home'>
      {

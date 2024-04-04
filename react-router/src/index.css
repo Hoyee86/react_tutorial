@@ -125,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-/* .Home, .NewPost, .PostPage, .About, .Missing {
+ .Home, .NewPost, .PostPage, .About, .Missing {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;
@@ -218,7 +218,7 @@ body {
 
 .statusMsg {
   margin-top: 2rem;
-} */
+} 
 
 @media only screen and (min-width: 610px) {
   html {

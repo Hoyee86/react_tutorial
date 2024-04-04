@@ -10,7 +10,7 @@ import Postpage from "./PostPage";
 import { useState } from "react";
 
 function App() {
-  const [post, setPost] = useState([
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: "My first Post",
@@ -51,7 +51,7 @@ function App() {
       <Header title="DLT Blogs" />
       <Nav search={search} setsearch={setSearch}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home posts={posts} />} />
         <Route path="/post" element={<NewPost />} />
         <Route path="/post/:id" element={<Postpage />} />
         <Route path="/about" element={<About />} />
