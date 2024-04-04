@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import About from "./About";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -42,11 +42,13 @@ function App() {
       body: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, ad omnis iusto exercitationem nisi laudantium soluta nihil quia optio commodi neque dolores voluptas officia dolore aspernatur libero, quaerat recusandae inventore!",
     },
   ]);
-
+  
+  const navigate = useNavigate()
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const handleDelete = (id) => {
     const postList = posts.filter(post => post.id !== id)
+    setPosts(postList)
   };
 
   return (
