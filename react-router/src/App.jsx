@@ -44,11 +44,12 @@ function App() {
   ]);
 
   const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([])
 
   return (
     <div className="App">
       <Header title="DLT Blogs" />
-      <Nav />
+      <Nav search={search} setsearch={setSearch}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<NewPost />} />
