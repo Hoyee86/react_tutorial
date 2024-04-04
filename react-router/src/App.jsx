@@ -45,6 +45,9 @@ function App() {
 
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([])
+  const handleDelete = () => {
+    
+  }
 
   return (
     <div className="App">
