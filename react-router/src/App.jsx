@@ -14,14 +14,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header title="DLT Blogs" />
       <Nav />
       <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route path="/post" element={<NewPost/>} />
+      <Route path="/post/:id" element={<Postpage/>}/>
       <Route path="/about" element={<About/>}/>
-      <Route path="/post-page" element={<Postpage/>}/>
+      <Route path="*" element={<Missing/>}/>
       </Routes>
-      
       <Footer />
     
     </div>
