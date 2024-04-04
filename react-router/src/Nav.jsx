@@ -5,7 +5,7 @@ const Nav = ({search, setSearch}) => {
   return (
     <nav className='nav'>
       <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="search" >Search Post</label>
+        <label htmlFor="search">search Post</label>
         <input id="search" type='text' placeholder='Search Post' value={search} onChange=
         {(e) => setSearch(e.target.value)} />
       </form>

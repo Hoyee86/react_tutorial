@@ -44,19 +44,22 @@ function App() {
   ]);
 
   const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([])
-  const handleDelete = () => {
-    
-  }
+  const [searchResult, setSearchResult] = useState([]);
+  const handleDelete = (id) => {
+    const postList = posts.filter(post => post.id !== id)
+  };
 
   return (
     <div className="App">
       <Header title="DLT Blogs" />
-      <Nav search={search} setsearch={setSearch}/>
+      <Nav search={search} setsearch={setSearch} />
       <Routes>
         <Route path="/" element={<Home posts={posts} />} />
         <Route path="/post" element={<NewPost />} />
-        <Route path="/post/:id" element={<Postpage posts={posts} handleDelete={handleDelete}/>} />
+        <Route
+          path="/post/:id"
+          element={<Postpage posts={posts} handleDelete={handleDelete} />}
+        />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Routes>
