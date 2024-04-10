@@ -22,8 +22,8 @@ const Postpage = ({ posts, handleDelete }) => {
           <Link to="/">Visit Our Homepage</Link>
         </p>
         </>
+         }
 
-        }
       </article>
     </main>
   );
