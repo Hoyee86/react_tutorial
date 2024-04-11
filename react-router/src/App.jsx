@@ -49,7 +49,7 @@ function App() {
   const handleDelete = (id) => {
     const postList = posts.filter(post => post.id !== id)
     setPosts(postList)
-    navigate('/')
+    navigate('')
   };
 
   return (
