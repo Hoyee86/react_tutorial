@@ -14,8 +14,8 @@ function App() {
   
   return (
     <div className="App">
-       <DataProvider>
       <Header title="DLT Blogs"/>
+       <DataProvider>
       <Nav/>
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
@@ -30,8 +30,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Routes>
-      <Footer />
       </DataProvider>
+      <Footer />
     
     </div>
   );
